@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 	// Jump mechanics
 	public int jumpSpeed;
 	public int jumpSpeedShort;
+	public int minusJumpSpeed;
 	public bool inJump = false;
 	public bool cancelJump = false;
 
@@ -28,17 +29,20 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		isGrounded = Physics2D.OverlapArea(pointOne.position, pointTwo.position, onlyGroundMask);
+	
+		isGrounded = Physics2D.OverlapArea (pointOne.position, pointTwo.position, onlyGroundMask);
 
-		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
+		if (Input.GetKey (KeyCode.Space) && isGrounded) {
 			inJump = true;
 		}
 
-		if (Input.GetKeyUp (KeyCode.Space) && !isGrounded) {
-			cancelJump = true;
+		if (verticalMovement > 0) {
+			if (Input.GetKeyUp (KeyCode.Space) && !isGrounded) {
+			cancelJump = true;		
+			
+			}
 		}
-		  
+
 	}
 	
 
@@ -50,20 +54,25 @@ public class Player : MonoBehaviour {
 		// movements
 		rigidbody2D.velocity = new Vector2 (horizontalMovement * speed * Time.deltaTime, verticalMovement);
 
-		// jumps
+		//jumps
 		if (inJump) {
 			rigidbody2D.AddForce (new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 			inJump = false;
 			}
 
 		if (cancelJump) {
-				rigidbody2D.AddForce (new Vector2 (0, jumpSpeedShort * Time.deltaTime), ForceMode2D.Impulse);
+			rigidbody2D.AddForce (new Vector2 (0, minusJumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 			cancelJump = false;
 			}
+
+
+	
 	}
+}
 	
 
 	
-}
+
+
 
 
