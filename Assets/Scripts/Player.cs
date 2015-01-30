@@ -10,10 +10,18 @@ public class Player : MonoBehaviour {
 
 	// Jump mechanics
 	public int jumpSpeed;
-	public int jumpSpeedShort;
 	public int minusJumpSpeed;
 	public bool inJump = false;
 	public bool cancelJump = false;
+
+	// Walled mechanics
+	public bool touchingWallLeft;
+	public Transform wallPointOneLeft;
+	public Transform wallPointTwoLeft;
+	public bool touchingWallRight;
+	public Transform wallPointOneRight;
+	public Transform wallPointTwoRight;
+	public LayerMask onlyWallMask;
 
 	// Grounded mechanics
 	public bool isGrounded;
@@ -29,20 +37,36 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		touchingWallRight = Physics2D.OverlapArea (wallPointOneRight.position, wallPointTwoRight.position, onlyWallMask);
+		touchingWallLeft = Physics2D.OverlapArea (wallPointOneLeft.position, wallPointTwoLeft.position, onlyWallMask);
 		isGrounded = Physics2D.OverlapArea (pointOne.position, pointTwo.position, onlyGroundMask);
 
-		if (Input.GetKey (KeyCode.Space) && isGrounded) {
+		Jump ();
+		WallJump ();
+	}
+
+	void Jump() {
+
+		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
 			inJump = true;
 		}
-
+		
 		if (verticalMovement > 0) {
 			if (Input.GetKeyUp (KeyCode.Space) && !isGrounded) {
-			cancelJump = true;		
-			
+				cancelJump = true;		
+				
 			}
 		}
+	
+	}
 
+	void WallJump() {
+
+		if (Input.GetKeyDown (KeyCode.Space) && !isGrounded && (touchingWallLeft || touchingWallRight)) {
+			rigidbody2D.AddForce(new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
+		}
+	
 	}
 	
 
