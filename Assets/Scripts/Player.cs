@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	// Player mechanics
+	public bool facingRight;
+
 	// Movement mechanics
 	public int speed;
 	public float horizontalMovement = 0;
@@ -78,7 +81,7 @@ public class Player : MonoBehaviour {
 		// movements
 		rigidbody2D.velocity = new Vector2 (horizontalMovement * speed * Time.deltaTime, verticalMovement);
 
-		//jumps
+		// jumps
 		if (inJump) {
 			rigidbody2D.AddForce (new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 			inJump = false;
@@ -89,7 +92,25 @@ public class Player : MonoBehaviour {
 			cancelJump = false;
 			}
 
+		// flips sprite
+		if (horizontalMovement < 0 && !facingRight) {
+			Flip ();
+		}
 
+		if (horizontalMovement > 0 && facingRight) {
+			Flip ();		
+		}
+
+	
+	}
+
+	void Flip() {
+
+		facingRight = !facingRight;
+
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	
 	}
 }
