@@ -32,10 +32,13 @@ public class Player : MonoBehaviour {
 	public Transform pointTwo;
 	public LayerMask onlyGroundMask;
 
+	// Animator
+	Animator anim;
 	
 	// Use this for initialization
 	void Start () {
 	
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -47,11 +50,12 @@ public class Player : MonoBehaviour {
 
 		Jump ();
 		WallJump ();
+		AnimatePlayer ();
 	}
 
 	void Jump() {
 
-		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
+		if (Input.GetKeyDown (KeyCode.Space) && isGrounded ) {
 			inJump = true;
 		}
 		
@@ -113,6 +117,17 @@ public class Player : MonoBehaviour {
 		transform.localScale = theScale;
 	
 	}
+
+	void AnimatePlayer() {
+	
+		anim.SetFloat ("Speed", Mathf.Abs (horizontalMovement)); 
+
+	}
+	
+
+	                                         
+
+	
 }
 	
 
