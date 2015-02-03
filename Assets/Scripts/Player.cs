@@ -119,11 +119,17 @@ public class Player : MonoBehaviour {
 	}
 
 	void AnimatePlayer() {
-	
-		anim.SetFloat ("Speed", Mathf.Abs (horizontalMovement)); 
+
+		int zeroVSpeed = (int)verticalMovement;
+
+
+		anim.SetInteger ("zeroVSpeed", zeroVSpeed);
+		anim.SetFloat ("Speed", Mathf.Abs (horizontalMovement));
+		anim.SetFloat ("vSpeed", verticalMovement);
+		anim.SetBool ("Grounded", isGrounded);
 
 	}
-	
+
 
 	                                         
 
