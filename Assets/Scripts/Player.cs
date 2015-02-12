@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
 	public Transform pointOne;
 	public Transform pointTwo;
 	public LayerMask onlyGroundMask;
+	
 
 	// Animator
 	Animator anim;
@@ -55,7 +56,7 @@ public class Player : MonoBehaviour {
 
 	void Jump() {
 
-		if (Input.GetKeyDown (KeyCode.Space) && isGrounded ) {
+		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
 			inJump = true;
 		}
 		
@@ -67,13 +68,13 @@ public class Player : MonoBehaviour {
 		}
 	
 	}
-
+	
 	void WallJump() {
 
 		if (Input.GetKeyDown (KeyCode.Space) && !isGrounded && (touchingWallLeft || touchingWallRight)) {
 			rigidbody2D.AddForce(new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 		}
-	
+
 	}
 	
 
