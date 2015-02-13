@@ -13,6 +13,12 @@ public class PlayerGrappleShoot : MonoBehaviour
 	public bool isHooked;
 	
 	public SpringJoint2D springJoint;
+	
+
+	void Awake()
+	{
+		CheckHooked ();
+	}
 
 	// Use this for initialization
 	void Start () 
@@ -41,10 +47,16 @@ public class PlayerGrappleShoot : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.LeftShift) ) 
 		{
 			hook.transform.position = grappleEnd.transform.position;
+
 				if (pullable) 
 				{
 					isHooked = true;
 				}
+				else 
+				{
+				isHooked = false;
+			}
+	
 		}
 		
 	}
