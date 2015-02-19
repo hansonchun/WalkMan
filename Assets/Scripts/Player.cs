@@ -31,7 +31,11 @@ public class Player : MonoBehaviour {
 	public Transform pointOne;
 	public Transform pointTwo;
 	public LayerMask onlyGroundMask;
-	
+
+	// Death mechanics
+	public float playerHeight;
+	public float deathHeight;
+	private Vector2 spawn;
 
 	// Animator
 	Animator anim;
@@ -40,6 +44,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 	
 		anim = GetComponent<Animator> ();
+		spawn = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -83,6 +88,8 @@ public class Player : MonoBehaviour {
 		horizontalMovement = Input.GetAxis ("Horizontal");
 		verticalMovement = rigidbody2D.velocity.y;
 
+		playerHeight = transform.position.y;
+
 		// movements
 		rigidbody2D.velocity = new Vector2 (horizontalMovement * speed * Time.deltaTime, verticalMovement);
 
@@ -106,6 +113,11 @@ public class Player : MonoBehaviour {
 			Flip ();		
 		}
 
+		// player death
+		if (playerHeight < deathHeight) {
+
+			Die();
+		}
 	
 	}
 
@@ -117,6 +129,11 @@ public class Player : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	
+	}
+
+	void Die() {
+
+		transform.position = spawn;
 	}
 
 	void AnimatePlayer() {
