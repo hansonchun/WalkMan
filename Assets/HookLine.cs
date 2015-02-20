@@ -14,6 +14,7 @@ public class HookLine : MonoBehaviour {
 	public float dist;
 
 	public float lineDrawSpeed = 6f;
+	
 
 	// Use this for initialization
 	void Start () {

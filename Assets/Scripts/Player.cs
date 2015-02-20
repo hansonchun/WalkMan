@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	// Player mechanics
-	public bool facingRight;
+	public bool facingRight = true;
 
 	// Movement mechanics
 	public int speed;
