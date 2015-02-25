@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FlickeringLightScript : MonoBehaviour {
 
-	private Light light;
+	Light light;
 	public int flickerSpeed;
 
 	// Use this for initialization
