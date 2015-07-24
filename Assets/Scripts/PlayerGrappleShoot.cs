@@ -54,7 +54,7 @@ public class PlayerGrappleShoot : MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.LeftShift) ) 
 		{
-			hook.renderer.enabled = true;
+			hook.GetComponent<Renderer>().enabled = true;
 
 			if (pullable) 
 			{
@@ -80,7 +80,7 @@ public class PlayerGrappleShoot : MonoBehaviour
 	{
 		if (!isHooked) 
 		{
-			hook.renderer.enabled = false;
+			hook.GetComponent<Renderer>().enabled = false;
 			hook.transform.position = transform.position;
 
 		}
@@ -91,7 +91,7 @@ public class PlayerGrappleShoot : MonoBehaviour
 		if (!player.facingRight) 
 		{
 			clone = Instantiate (hook, hook.transform.position, hook.transform.rotation) as GameObject;
-			Destroy (clone.rigidbody2D);
+			Destroy (clone.GetComponent<Rigidbody2D>());
 			//clone.rigidbody2D.velocity = transform.TransformDirection (new Vector2 (xSpeed * Time.deltaTime, ySpeed * Time.deltaTime));
 			clone.transform.Translate (new Vector2(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime), Space.Self);
 			//clone.transform.position = new Vector3(Mathf.PingPong (Time.time, 10), grappleEnd.transform.position.y, grappleEnd.transform.position.z); 
@@ -100,7 +100,7 @@ public class PlayerGrappleShoot : MonoBehaviour
 		else
 		{
 			clone = Instantiate (hook, hook.transform.position, hook.transform.rotation) as GameObject;
-			Destroy (clone.rigidbody2D);
+			Destroy (clone.GetComponent<Rigidbody2D>());
 			//clone.rigidbody2D.velocity = transform.TransformDirection (new Vector2 (-xSpeed * Time.deltaTime, ySpeed * Time.deltaTime));
 			clone.transform.Translate (new Vector2(-xSpeed * Time.deltaTime, ySpeed * Time.deltaTime), Space.Self);
 			Destroy (clone, time);

@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
 	void WallJump() {
 
 		if (Input.GetKeyDown (KeyCode.Space) && !isGrounded && (touchingWallLeft || touchingWallRight)) {
-			rigidbody2D.AddForce(new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce(new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 		}
 
 	}
@@ -86,21 +86,21 @@ public class Player : MonoBehaviour {
 	void FixedUpdate() {
 
 		horizontalMovement = Input.GetAxis ("Horizontal");
-		verticalMovement = rigidbody2D.velocity.y;
+		verticalMovement = GetComponent<Rigidbody2D>().velocity.y;
 
 		playerHeight = transform.position.y;
 
 		// movements
-		rigidbody2D.velocity = new Vector2 (horizontalMovement * speed * Time.deltaTime, verticalMovement);
+		GetComponent<Rigidbody2D>().velocity = new Vector2 (horizontalMovement * speed * Time.deltaTime, verticalMovement);
 
 		// jumps
 		if (inJump) {
-			rigidbody2D.AddForce (new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce (new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 			inJump = false;
 			}
 
 		if (cancelJump) {
-			rigidbody2D.AddForce (new Vector2 (0, minusJumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce (new Vector2 (0, minusJumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
 			cancelJump = false;
 			}
 

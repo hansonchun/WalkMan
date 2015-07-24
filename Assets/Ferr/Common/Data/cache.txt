@@ -16,6 +16,12 @@ Assets/Prefabs/Player.prefab
 Assets/Prefabs/GrappleWall.prefab
 Assets/Prefabs/Enemy.prefab
 Assets/Prefabs/Main Camera.prefab
+Assets/Prefabs/DummyWall.prefab
+Assets/2DVLS/Samples/Art/Prefabs/ReverieWatermark.prefab
+Assets/Prefabs/DummyGround 1.prefab
+Assets/Prefabs/DummyGround.prefab
+Assets/Prefabs/DynamicLight.prefab
+Assets/2DVLS/Samples/Art/Prefabs/Floor.prefab
 
 [Ferr2DT_PathTerrain]
 Assets/Ferr/2DTerrain/TerrainMaterials/ForestTerrainMaterial.prefab
@@ -34,3 +40,9 @@ Assets/Prefabs/Player.prefab
 Assets/Prefabs/GrappleWall.prefab
 Assets/Prefabs/Enemy.prefab
 Assets/Prefabs/Main Camera.prefab
+Assets/Prefabs/DummyWall.prefab
+Assets/2DVLS/Samples/Art/Prefabs/ReverieWatermark.prefab
+Assets/Prefabs/DummyGround 1.prefab
+Assets/Prefabs/DummyGround.prefab
+Assets/Prefabs/DynamicLight.prefab
+Assets/2DVLS/Samples/Art/Prefabs/Floor.prefab

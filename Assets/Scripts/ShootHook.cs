@@ -11,7 +11,7 @@ public class ShootHook : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-			rigidbody2D.AddForce (new Vector2 (hookSpeedX * Time.deltaTime, hookSpeedY * Time.deltaTime), ForceMode2D.Impulse); 
+			GetComponent<Rigidbody2D>().AddForce (new Vector2 (hookSpeedX * Time.deltaTime, hookSpeedY * Time.deltaTime), ForceMode2D.Impulse); 
 
 			
 	
@@ -21,7 +21,7 @@ public class ShootHook : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Pullable") {
 
-			rigidbody2D.isKinematic = true;
+			GetComponent<Rigidbody2D>().isKinematic = true;
 
 		}
 	}

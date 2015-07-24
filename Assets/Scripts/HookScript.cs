@@ -19,7 +19,7 @@ public class HookScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Pullable") 
 		{
-			rigidbody2D.isKinematic = true;
+			GetComponent<Rigidbody2D>().isKinematic = true;
 		}
 	}
 }
