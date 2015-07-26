@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	public bool facingRight;
 
 	// Movement mechanics
-	public int speed;
+	public float speed;
 	public float horizontalMovement = 0;
 	public float verticalMovement = 0;
 
@@ -93,6 +93,7 @@ public class Player : MonoBehaviour {
 		// movements
 		GetComponent<Rigidbody2D>().velocity = new Vector2 (horizontalMovement * speed * Time.deltaTime, verticalMovement);
 
+
 		// jumps
 		if (inJump) {
 			GetComponent<Rigidbody2D>().AddForce (new Vector2 (0, jumpSpeed * Time.deltaTime), ForceMode2D.Impulse);
@@ -145,6 +146,7 @@ public class Player : MonoBehaviour {
 		anim.SetFloat ("Speed", Mathf.Abs (horizontalMovement));
 		anim.SetFloat ("vSpeed", verticalMovement);
 		anim.SetBool ("Grounded", isGrounded);
+		anim.SetBool ("TouchingWall", touchingWallRight);
 
 	}
 
